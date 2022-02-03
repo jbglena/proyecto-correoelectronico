@@ -1,0 +1,660 @@
+<section class="py-0 h-100">
+    <div class="row h-100">
+        <div class="col-md-8 h-100">
+            <div class="card mb-4 mb-md-0 h-100" style="overflow: auto" id="middle-section-detalle-correo">
+                <div class="card-header d-flex justify-content-between align-items-center bg-white" style="position: sticky; top: 0; z-index: 1000; background: white;">
+                    <div>
+                        <h4 id="asunto-correo-detalle-correo" style="font-size: 1.1rem">New chilli piper licenses</h4>
+                    </div>
+                    <style>
+                        .header-leftside-contenido-correo svg{
+                            height: 16px;
+                            width: 16px;
+                        }
+                    </style>
+                    <div>
+                        <nav class="nav flex-nowrap header-leftside-contenido-correo">
+                            <a id="btn-salir-detalleCorreo" href="javascript:void(0)" class="px-1" data-toggle="tooltip" title="Atras" onclick="FnComebackMailContainer();"><i class="wd-20" data-feather="arrow-left"></i></a>
+                            <a id="btn-fav-detalleCorreo" href="javascript:void(0)" class="px-1" data-toggle="tooltip" title="Favorito"><i class="wd-20" data-feather="star"></i></a>
+                            <!--<a href="javascript:void(0)" class="px-1" data-toggle="tooltip" title="Reloj"><i class="wd-20" data-feather="clock"></i></a>-->
+                            <a id="btn-archivar-detalleCorreo" href="javascript:void(0)" class="px-1" data-toggle="tooltip" title="Archivar"><i class="wd-20" data-feather="archive"></i></a>
+                            <div>
+                                <a id="btn-moverCarpeta-detalleCorreo" href="javascript:void(0)" class="px-1" data-toggle="tooltip" title="Mover correo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg></a>
+                                <div class="position-absolute d-none" id="container-listado-carpetas-email2" data-open="false">
+
+                                </div>
+                            </div>
+                            <a id="btn-restaurar-detalleCorreo" href="javascript:void(0)" class="px-1 " data-toggle="tooltip" title="Restaurar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12" /><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" /></svg>
+                            </a>
+                            <a id="btn-eliminarDefinitiva-detalleCorreo" href="javascript:void(0)" class="px-1 " data-toggle="tooltip" title="Eliminar"><i class="wd-20" data-feather="trash-2"></i></a>
+                            <a id="btn-papelera-detalleCorreo" href="javascript:void(0)" class="px-1" data-toggle="tooltip" title="Papelera"><i class="wd-20" data-feather="trash-2"></i></a>
+                            <div class="dropdown">
+                                <a href="javascript:void(0)" class="px-1" data-toggle="dropdown" title="Ver más"><i class="wd-20" data-feather="more-vertical"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="javascript:void(0)" class="dropdown-item" id="btn-correo-marcarnoleido">marcar como  no leido</a>
+                                    <a href="javascript:void(0)" class="dropdown-item">Opcion dos</a>
+                                    <a href="javascript:void(0)" class="dropdown-item">Opcion tres</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <ul class="list-unstyled mb-0" id="listado-correos-detalle-correo">
+                    <li class="plz-mail-replies-item card-body">
+                        <div class="media align-items-center mb-3">
+                            <div class="media-body">
+                                <h6 id="name-from" class="mb-0">Samuel Jennings</h6>
+                            </div>
+                            <span id="fecha-envio-correo" class="text-muted small text-uppercase">Hoy 2:31 PM</span>
+                        </div>
+                        <div id="contenido-correo" class="mb-0 body-email">
+                            Hey Scott,<br>When can we expect to deliver those new licenses?<br><br>Best,<br>Samuel
+                        </div>
+                        <!-- actions bar -->
+                        <footer class="py-2 d-flex justify-content-between align-items-center border-0">
+                            <div class="d-flex flex-wrap">
+                                <button id="btn_reply" class="btn btn-outline-primary btn-sm mr-1 mb-1"><i class="mr-1" data-feather="corner-up-left"></i>Reply</button>
+                                <button class="btn btn-white btn-sm mr-1 mb-1"><i class="mr-1" data-feather="arrow-right"></i>Forward</button>
+                                <span class="d-none d-md-block mx-md-3"></span>
+                                @*<button class="btn btn-white btn-sm mr-1 mb-1"><i class="mr-1" data-feather="plus"></i>Task</button>
+                                <button class="btn btn-white btn-sm mr-1 mb-1"><i class="mr-1" data-feather="refresh-cw"></i>Add to Cadence</button>
+                                <button class="btn btn-white btn-sm mr-1 mb-1"><i class="mr-1" data-feather="calendar"></i>Instant Booker</button>*@
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-white btn-sm px-2 mr-1" data-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="javascript:void(0)" class="dropdown-item">Opcion uno</a>
+                                    <a href="javascript:void(0)" class="dropdown-item">Opcion dos</a>
+                                    <a href="javascript:void(0)" class="dropdown-item">Opcion tres</a>
+                                </div>
+                            </div>
+                        </footer>
+                    </li>
+                </ul>
+
+                
+
+                <!-- reply -->
+                <footer id="container-reply" class="card-footer shadow-lg p-0 d-none">
+                    <div class="p-3">
+                        <div class="media align-items-start mb-3">
+                            <button id="btn-regresar-rta" class="btn btn-outlinebtn-sm mr-1 mb-1">
+                                <span><i class="wd-25 mr-3" data-feather="corner-up-left"></i></span>
+                            </button>
+
+                            <div class="media-body">
+                                <div class="mb-0" style="font-size:0.9em">
+                                    <span class="text-muted tx-12">De:</span> <b><span id="reply-emailFrom-name"> Kristian Garcia Valcarcel </span> <span> [</span> <span id="reply-emailFrom">kgarciavalcarcel@gmail.com </span><span>]</span></b>
+                                </div>
+
+                                <hr class="my-2">
+                                
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm col-xl-1" style="max-width: 100px; font-size: 14px">Para:</div>
+                                    <div class="col-sm-11 col-xl position-relative">
+                                        <div id="input-emailto-reply-detalleCorreo" class="bd-0 pd-x-0 d-flex my-mail-election-input postion-relative" style="">
+                                            <div class="conteiner w-100 d-flex" style="gap:.3rem; margin-bottom: .3rem; min-height: 30px; max-height: 75px; overflow-y: auto; flex-wrap: wrap; align-items: center;">
+                                                <span contenteditable="true" class="input" style="outline: none; vertical-align: middle; height: 30px;">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div id="div-lista-correos-para-reply" class="list-group position-absolute container-lista-correo" style="top : 100% ; overflow-y: auto; max-height: 250px; z-index: 99999999;"> </div>
+                                    </div>
+                                </div>
+
+                                <hr id="separacion-linea-cc-reply" class="my-1 d-none">
+                                <!--Opcion con copia rta-->
+                                <div id="compose-reply-cc-container" class="mb-0 d-none" style="font-size:0.9em">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-sm col-xl-1" style="max-width: 60px; font-size: 14px">Cc:</div>
+                                        <div class="col-sm-11 col-xl">
+                                            <div id="input-cc-reply-detalleCorreo" class="bd-0 pd-x-0 d-flex my-mail-election-input" style="">
+                                                <div class="conteiner w-100 d-flex" style="gap:.3rem; margin-bottom: .3rem; min-height: 30px; max-height: 75px; overflow-y: auto; flex-wrap: wrap; align-items: center;">
+                                                    <span contenteditable="true" class="input" style="outline: none; vertical-align: middle; height: 30px;">
+
+                                                    </span>
+                                                </div>
+                                                <div id="div-lista-correos-cc-detalleCorreo" class="list-group position-absolute container-lista-correo" style="top : 100% ; overflow-y: auto; max-height: 250px; z-index: 99999999;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="compose-form-btn-group-1">
+                                            <button class="btn-compose-form-sm" id="compose-reply-close-cc">x</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr id="separacion-linea-cco-reply" class="my-1 d-none">
+                                <!--Opcion con copia oculta rta-->
+                                <div id="compose-reply-cco-container" class="d-none" style="font-size:0.9em">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-sm col-xl-1" style="max-width: 60px; font-size: 14px">Cco:</div>
+                                        <div class="col-sm-11 col-xl">
+                                            <div id="input-cco-reply-detalleCorreo" class="bd-0 pd-x-0 d-flex my-mail-election-input" style="">
+                                                <div class="conteiner w-100 d-flex" style="gap:.3rem; margin-bottom: .3rem; min-height: 30px; max-height: 75px; overflow-y: auto; flex-wrap: wrap; align-items: center;">
+                                                    <span contenteditable="true" class="input" style="outline: none; vertical-align: middle; height: 30px;">
+
+                                                    </span>
+                                                </div>
+                                                <div id="div-lista-correos-cco-detalleCorreo" class="list-group position-absolute container-lista-correo" style="top : 100% ; overflow-y: auto; max-height: 250px; z-index: 99999999;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="compose-form-btn-group-1">
+                                            <button class="btn-compose-form-sm" id="compose-reply-close-cco">x</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--btn que abren div -> CC y CCO -->
+                            <div class="d-flex flex-nowrap">
+                                <button id="btn-add-cc" class="btn btn-white btn-xs btn-uppercase mx-1"><i data-feather="plus"></i> Cc</button>
+                                <button id="btn-add-bcc" class="btn btn-white btn-xs btn-uppercase mx-1"><i data-feather="plus"></i> Bcc</button>
+                            </div>
+                        </div>
+                        <div id="editor-texto" style="height: 170px ; overflow-y: auto">
+
+                        </div>
+                    </div>
+                    <!--Contenedor de archivos adjuntos-->
+                    <div id="container-content-correos-archivos" class="p-3">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center bg-light rounded border text-muted p-1 tx-13 mb-1">
+                                    <div class="media align-items-center">
+                                        <div class="mr-1">
+                                            <i class="wd-15" data-feather="file"></i>
+                                        </div>
+                                        <div class="media-body"><a href="" class="text-muted">Chilli Piper - CRM.zip</a></div>
+                                    </div>
+                                    <div class="media align-items-center">
+                                        <div class="media-body">26.5 MB</div>
+                                        <div class="ml-1">
+                                            <i class="wd-15" data-feather="trash" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center bg-light rounded border text-muted p-1 tx-13 mb-1">
+                                    <div class="media align-items-center">
+                                        <div class="mr-1">
+                                            <i class="wd-15" data-feather="file"></i>
+                                        </div>
+                                        <div class="media-body"><a href="" class="text-muted">Chilli Piper - CRM.zip</a></div>
+                                    </div>
+                                    <div class="media align-items-center">
+                                        <div class="media-body">26.5 MB</div>
+                                        <div class="ml-1">
+                                            <i class="wd-15" data-feather="trash" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- libreria Quill - tool container-->
+                    <div id="toolbar-container" class="align-items-md-center flex-wrap p-1 d-none">
+                        <div>
+                            <span class="ql-formats">
+                                <select class="ql-font"></select>
+                                <select class="ql-size"></select>
+                            </span>
+                            <span class="ql-formats">
+                                <select class="ql-color"></select>
+                                <select class="ql-background"></select>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                                <button class="ql-strike"></button>
+                            </span>
+                        </div>
+                    </div>
+                    <!--Footer - btns enviar y adj archivos-->
+                    <div class="d-flex  align-items-md-center flex-wrap p-3">
+                        <div class="d-flex align-items-center mb-1 mb-md-0">
+                            <button id="btn-enviar-respuestaCoreo" class="btn btn-primary btn-sm mr-3"><i data-feather="send"></i> Enviar</button>
+                            @*<div class="btn-group">
+                                    <button class="btn btn-white btn-sm px-2"><i data-feather="clock"></i></button>
+                                    <button class="btn btn-white btn-sm px-2"><i data-feather="bell"></i></button>
+                                    <button class="btn btn-white btn-sm px-2"><i data-feather="calendar"></i></button>
+                                </div>*@
+                        </div>
+                        <div class="d-flex align-items-center mb-1 mb-md-0 mx-4">
+                            <button id="btn-textoEditReply" class="btn btn-white btn-sm px-2"><i data-feather="type"></i></button>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-1 mb-md-0">
+                            <div class="btn-group">
+                                <!--abre explorador de archivos-->
+                                <input id="txt-archivo-correo" type="file" class="d-none" value="" />
+                                <input id="txt-imagenes-correo" type="file" class="d-none" accept="image/*" multiple value="" />
+                                <!--Botones Aduntar archivos-->
+                                <button href="javascript:void(0);" onclick="javascript: document.getElementById('txt-archivo-correo').click();" class="btn btn-white btn-sm px-2" title="Adjuntar archivos"><i data-feather="paperclip" title="Adjuntar archivos"></i></button>
+                                <button href="javascript:void(0);" onclick="javascript: document.getElementById('txt-imagenes-correo').click();" class="btn btn-white btn-sm px-2" title="Adjuntar imagen"><i data-feather="image" title="Adjuntar imagen"></i></button>
+                                <button class="btn btn-white btn-sm px-2" data-toggle="modal" data-target="#adjuntarLink-reply"><i data-feather="link" title="Adjuntar link"></i></button>
+                                <!--<a class="btn btn-white btn-sm px-2" href="javascript:void(0);" onclick="javascript: document.getElementById('txt-archivomensaje-chat').click();" title="Añadir Emoji">
+                                      <i data-feather="smile"></i>
+                                </a>-->
+                                <button class="btn btn-white btn-sm px-2 dropdown-menu dropdown-menu-right"><i data-feather="file-text"></i></button>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-1 mb-md-0 ml-auto">
+                            <button id="btn-delete" class="btn btn-white btn-sm px-2"><i data-feather="trash"></i></button>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <!--pop un adjuntar link reply-->
+        <div class="modal fade" id="adjuntarLink-reply" tabindex="-1" aria-labelledby="adjuntarLink-reply" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Añadir enlace</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="label-control" for="ingrsetex-adjlink">Texto</label>
+                                    <input id="ingrsetex-adjlink" type="text" class="form-control form-control-sm" placeholder="Ingrese texto..">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="label-control" for="ingreselink-adjunto">Enlace</label>
+                                    <input id="ingreselink-adjunto" type="url" class="form-control form-control-sm" placeholder="Ingrese enlace...">
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light btn-uppercase btn-sm" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="btn-guardarlink-correos" class="btn btn-primary btn-uppercase btn-sm">
+                            <i class="fas fa-ticket-alt mg-r-5"></i><span>Guardar </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Seccion comentarios, tareas, oportunidades y actividades-->
+        <div class="col-md-4 h-100">
+            <div class="card h-100">
+                <div class="card-header bg-white sticky-top px-0 pb-0 pt-2" style="z-index: 1">
+                    <ul class="nav nav-line" id="myTab" role="tablist">
+                        @*<li class="nav-item ml-0">
+                                <a class="nav-link px-3 active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Información</a>
+                            </li>*@
+                        <li class="nav-item ml-0">
+                            <a class="nav-link px-3 active" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comentarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="crm-tab" data-toggle="tab" href="#seccion-crm-correo" role="tab" aria-controls="crm" aria-selected="false">CRM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="activities-tab" data-toggle="tab" href="#activities" role="tab" aria-controls="activities" aria-selected="false">Actividades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="task-tab" data-toggle="tab" href="#tasks-correo" role="tab" aria-controls="activities" aria-selected="false">Tareas</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--contenido nav-->
+                <div class="tab-content">
+                    @*<div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                            <div class="d-flex flex-nowrap">
+                                <div class="flex-grow-1 border-bottom p-2">
+                                    <div class="media align-items-center">
+                                        <div class="mr-3">
+                                            <i class="wd-20" data-feather="flag"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <small class="text-muted">Opportunity</small>
+                                            <div class="tx-bold">New Chili Licenses</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-light rounded-0 px-3" data-toggle="tooltip" title="Agregar nuevo">
+                                    <i data-feather="plus"></i>
+                                </button>
+                            </div>
+                            <div class="d-flex flex-nowrap">
+                                <div class="flex-grow-1 border-bottom p-2">
+                                    <div class="media align-items-center">
+                                        <div class="mr-3">
+                                            <i class="wd-20" data-feather="flag"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <small class="text-muted">Opportunity</small>
+                                            <div class="tx-bold">New Chili Licenses</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-light rounded-0 px-3" data-toggle="tooltip" title="Agregar nuevo">
+                                    <i data-feather="plus"></i>
+                                </button>
+                            </div>
+                            <div class="bg-light border-bottom">
+                                <div class="px-2 py-3">
+                                    <div class="media align-items-center mb-2">
+                                        <div class="mr-3">
+                                            <i class="wd-20" data-feather="flag"></i>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="tx-bold">Next step <span class="badge badge-success ml-1">En progreso</span></div>
+                                        </div>
+                                        <div class="dropdown ml-2">
+                                            <button class="btn btn-white btn-xs border-0 px-2" data-toggle="dropdown">
+                                                <i data-feather="more-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="javascript:void(0)" class="dropdown-item">Opcion uno</a>
+                                                <a href="javascript:void(0)" class="dropdown-item">Opcion dos</a>
+                                                <a href="javascript:void(0)" class="dropdown-item">Opcion tres</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="tx-13 text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi totam repellendus error!</p>
+                                    <div class="row row-xs">
+                                        <div class="col">
+                                            <input type="text" class="form-control form-control-sm" placeholder="Nombre">
+                                        </div>
+                                        <div class="col">
+                                            <input type="date" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-2 py-3 border-top">
+                                    <div class="row row-xs align-items-center">
+                                        <div class="col tx-13 text-muted">Did this step get completed?</div>
+                                        <div class="col">
+                                            <div class="btn-group w-100">
+                                                <button class="btn btn-primary btn-xs">
+                                                    <i data-feather="check" class="mr-1"></i>Yes
+                                                </button>
+                                                <button class="btn btn-white btn-xs">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Seccion informacion (CRM, actividades y tareas)-->
+                            <div class="card-body">
+                                <ul class="nav nav-line flex-grow-1" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="crm-tab" data-toggle="tab" href="#crm" role="tab" aria-controls="crm" aria-selected="false">CRM</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="activities-tab" data-toggle="tab" href="#activities" role="tab" aria-controls="activities" aria-selected="false">Actividades</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="task-tab" data-toggle="tab" href="#tasks" role="tab" aria-controls="activities" aria-selected="false">Tareas</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content pt-4">
+
+                                </div>
+                            </div>
+                        </div>*@
+                    <!--Comentarios-->
+                    <div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        <div class="card-body p-0 d-flex justify-content-between flex-column" style=" height: calc(100vh - 150px)">
+                            <ul class="list-unstyled mb-0" id="contenedor-comentario" style="height:calc(100% - 160px); overflow-y: auto">
+                                
+                            </ul>
+                            <div style="height: 130px;" class="p-2">
+                                <textarea maxlength="250" id="textarea-comentario" rows="2" class="form-control" placeholder="Escriba..."></textarea>
+                                <div class="d-flex justify-content-end mt-3">
+                                    <div>
+                                        <button id="btn-guardar-comentarios" class="btn btn-primary btn-xs">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--CRM oportunidades-->
+                    <div class="tab-pane fade" id="seccion-crm-correo" role="tabpanel" aria-labelledby="crm-tab">
+                        <div class="card-body p-2" style="max-height: calc(100vh - 160px); overflow-y: auto">
+                            <div>
+                                <div class="d-flex justify-content-between mb-2 align-items-center px-2">
+                                    <span>
+                                        Oportunidades
+                                    </span>
+                                    <button class="btn btn-xs pd-x-15" id="btn-crearoportunidadcontacto-correo" data-toggle="modal" href="#modal-creacionoportunidadcliente-correos">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    </button>
+                                </div>
+
+                                <div class="pos-relative">
+                                    <div class="panel-cargandoregistros-correo" id="panel-cargandoregistrooportunidades-correo" style="display: none;">
+                                        <div class="lds-ring">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+
+                                    <div id="correo-container-oportunidades" class="container-group-correo p-2">
+                                        <div style="height: 230px; text-align: center; font-size: 13px;">
+                                            <div>No hay oportunidades a mostrar</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Actividades (Calendario)-->
+                    <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-tab">
+                        <div class="card-body p-2" style="max-height: calc(100vh - 160px); overflow-y: auto">
+                            <section>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div>
+                                        <span>Calendario</span>
+                                    </div>
+                                    <div>
+                                        <a class="btn btn-xs pd-x-5" id="btn-agregar-evento-calendario-correo" data-toggle="collapse" href="#container-mail-calendario">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                        </a>
+                                        <a class="btn btn-xs pd-x-5" id="btn-refresar-calendario-correo" data-toggle="collapse">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rotate-cw wd-10 mg-r-5"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="collapse wrapper-form-agregar-calendario-corrreo" id="container-mail-calendario">
+                                    <div class="form-agregar-calendario-correo">
+                                        <form id="frm-create-event-correo" class="p-2">
+                                            <div class="row row-sm">
+                                                <div class="col-sm-6">
+                                                    <label class="label-control mg-b-0" for="input-fecha-evento">Fecha Evento</label>
+                                                    <input type="text" class="form-control form-control-sm datepicker-chat hasDatepicker" id="input-fecha-evento" placeholder="DD/MM/YYYY" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="input-time-create-event-correo-tarea" class="label-control mg-b-0">Hora de Evento</label>
+                                                    <input id="input-time-create-event-correo-tarea" type="time" class="form-control form-control-sm form-check" required>
+                                                </div><!-- col-6 -->
+                                            </div><!-- row -->
+                                            <div class="">
+                                                <label for="input-create-event-correo-description" class="label-control mg-b-0">Descripcion</label>
+                                                <input id="input-create-event-correo-description" type="text" class="form-control form-control-sm" placeholder="Ingrese descipcion" required>
+                                            </div>
+                                            <div class="">
+                                                <label for="cbo-create-event-correo-usuario-asignado" class="label-control mg-b-0">Usuario Asignado</label>
+                                                <select id="cbo-create-event-correo-usuario-asignado" class="form-control form-control-sm">
+                                                    @if (Model.ListadoUsuarios.Rows.Count > 0)
+                                                    {
+                                                        for (int usu = 0; usu < Model.ListadoUsuarios.Rows.Count; usu++)
+                                                        {
+                                                            <option value="@Model.ListadoUsuarios.Rows[usu]["id"].ToString()">@Model.ListadoUsuarios.Rows[usu]["nombre"].ToString()</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="form-row mg-t-5" style="margin-bottom: 15px">
+                                                <div class="col-md-12">
+                                                    <label for="input-create-event-correo-notas" class="label-control mg-b-0">Notas</label>
+                                                    <textarea id="input-create-event-correo-notas" class="form-control form-control-sm" placeholder="Ingrese notas" rows="3" required=""></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-end">
+                                                <div>
+                                                    <button id="btn-create-event-correo-guardar" type="submit" class="btn btn-primary btn-uppercase btn-sm">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                                                        Guardar <span class="spinner-border spinner-border-sm mg-l-5 d-none" role="status" aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div id="container-eventos-correos" class="container-group-correos">
+
+
+
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <style>
+                        .plz-mail-item svg{
+                            height: 14px;
+                            width: 16px;
+                        }
+                        .input-tarea-correo {
+                            outline: none;
+                            border: none;
+                            width: 100%;
+                        }
+                    </style>
+                    <!--Tareas-->
+                    <div class="tab-pane fade" id="tasks-correo" role="tabpanel" aria-labelledby="task-tab">
+                        <div class="card-body p-2" style="max-height: calc(100vh - 160px); overflow-y: auto">
+                            <div id="section-correo-tareas">
+                                <div class="d-flex justify-content-between py-3">
+                                    <div class="w-100">
+                                        <input type="text" class="input-tarea-correo py-2 border-bottom" placeholder="Escribe una tarea..." id="input-tab-correo-creartarea" />
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <a class="btn btn-xs pd-x-5" id="btn-refresar-tareas-correo" data-toggle="collapse">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rotate-cw wd-10 mg-r-5"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div id="correo-container-tareas" class="container-group-correo">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Pop up adjuntar link---Nuevo correo-->
+<div class="modal fade" id="adjuntarLink-nuevoCoreo" tabindex="-1" aria-labelledby="adjuntarLink-reply" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Añadir enlace</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="label-control">Texto</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Ingrese texto..">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="label-control">Enlace</label>
+                            <input type="url" class="form-control form-control-sm" placeholder="Ingrese enlace...">
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light btn-uppercase btn-sm" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btn-guardar-link-correonuevo" class="btn btn-primary btn-uppercase btn-sm">
+                    <i class="fas fa-ticket-alt mg-r-5"></i><span>Guardar </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal generar oportunidad-->
+<div class="modal fade effect-scale" id="modal-creacionoportunidadcliente-correos" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <section class="modal-header">
+                <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-13 mb-0">Generar Oportunidad</h6>
+                <button type="button" class="close pos-absolute t-10 r-15" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x" class="wd-20"></i></span>
+                </button>
+            </section>
+            <div class="modal-body">
+                <section id="container-generacionoportunidadescrm-correos">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="label-control" for="cbo-usuarioasignadocrm-correo">Usuario Asignado</label>
+                            <select class="form-control form-control-sm" id="cbo-usuarioasignadocrm-correo">
+                                <option value="0" required>-- Seleccionar una opción --</option>
+                                @if (Model.ListadoUsuarios.Rows.Count > 0)
+                                {
+                                    for (int usu = 0; usu < Model.ListadoUsuarios.Rows.Count; usu++)
+                                    {
+                                        <option value="@Model.ListadoUsuarios.Rows[usu]["id"].ToString()">@Model.ListadoUsuarios.Rows[usu]["nombre"].ToString() - @Model.ListadoUsuarios.Rows[usu]["rol"].ToString()</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="label-control" for="cbo-etapaventaoportunidad-correos">Etapa Venta</label>
+                            <select class="form-control form-control-sm" id="cbo-etapaventaoportunidad-correos">
+                                <option value="0" required>-- Seleccionar una opción --</option>
+                                @if (Model.ListadoEmbudoVentas.Rows.Count > 0)
+                                {
+                                    for (int usu = 0; usu < Model.ListadoEmbudoVentas.Rows.Count; usu++)
+                                    {
+                                        <option value="@Model.ListadoEmbudoVentas.Rows[usu]["id"].ToString()">@Model.ListadoEmbudoVentas.Rows[usu]["descripcionEtapa"].ToString()</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="label-control" for="txt-comentariocrm-correos">Comentarios</label>
+                            <textarea id="txt-comentariocrm-correos" class="form-control form-control-sm" placeholder="Ingrese sus comentarios" rows="3"></textarea>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer pd-t-6 pd-b-6">
+                <button type="button" class="btn btn-light btn-uppercase btn-sm" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btn-generaroportunidadcrm-correos" class="btn btn-primary btn-uppercase btn-sm">
+                    <i class="fas fa-ticket-alt mg-r-5"></i>
+                    <span>Generar </span>
+                    <span class="spinner-border spinner-border-sm mg-l-5 d-none" role="status" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

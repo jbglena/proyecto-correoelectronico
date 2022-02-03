@@ -1,0 +1,546 @@
+<div class="content-body py-0">
+    <div class="d-sm-flex align-items-center justify-content-between my-2">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb df-breadcrumbs m-0">
+                    <li class="breadcrumb-item">Inicio</li>
+                    <li class="breadcrumb-item">Temporal</li>
+                    <li class="breadcrumb-item active" aria-current="page">Bandeja Correos</li>
+                </ol>
+            </nav>
+        </div>
+        <!-- <div class="tx-right">
+            <button type="button" class="btn btn-xs pd-x-15 btn-primary btn-uppercase mg-l-5"><i class="wd-10 mg-r-5" data-feather="plus"></i> Btn Opcional</button>
+        </div> -->
+    </div>
+
+    <div class="row" style="height: calc(100vh - 100px);">
+
+        <div class="col-md-3 col-lg-3 col-xl-2" style="height : 100%">
+            <div class="card h-100 sticky-top mb-3" style="top: 1rem;">
+                <div class="card-body">
+                    <button id="mailComposeBtn" class="btn btn-primary btn-block tx-uppercase tx-10 tx-medium tx-sans tx-spacing-3">Nuevo correo</button>
+
+                    <div class="pd-b-10 pd-x-10 mt-3">
+                        <nav class="nav nav-sidebar tx-13" id="navBar-container">
+                            <a id="btn-inbox-correos" href="javascript:void(0)" class="nav-link active"><i data-feather="inbox"></i> <span>Recibidos</span> <span id="contador-correos-inbox" class="badge"></span></a>
+                            <a id="btn-starred-correos" href="javascript:void(0)" class="nav-link"><i class="wd-20" data-feather="star"></i> <span>Destacados</span> <span class="badge"></span></a>
+                            <a id="btn-archive-correos" href="javascript:void(0)" class="nav-link"><i class="wd-20" data-feather="archive"></i> <span>Archivados</span> <span class="badge"></span></a>
+                            <!--<a id="btn-snoozed-correos" href="javascript:void(0)" class="nav-link"><i data-feather="clock"></i> <span>Snoozed</span></a>-->
+                            <a id="btn-sent-correos" href="javascript:void(0)" class="nav-link"><i data-feather="send"></i> <span>Enviados</span></a>
+                            <a id="btn-drafts-correos" href="javascript:void(0)" class="nav-link"><i data-feather="file"></i> <span>Borradores</span></a>
+                            <!--<a id="btn-spam-correos" href="javascript:void(0)" class="nav-link"><i data-feather="slash"></i> <span>Spam</span></a>-->
+                            <a id="btn-bin-correos" href="javascript:void(0)" class="nav-link"><i data-feather="trash"></i> <span>Papelera</span></a>
+                        </nav>
+                    </div>
+                    <div class="pd-10">
+                        <div class="d-flex justify-content-between align-items-center section-1-carpetas">
+                            <label class="tx-sans tx-uppercase tx-medium tx-10 tx-spacing-1 tx-color-03 pd-l-10">Carpetas</label>
+                            <button class="btn-email-add-carpeta" id="btn-email-add-carpeta">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+
+                        <nav class="nav nav-sidebar tx-13" id="container-carpetas-section-1-email">
+
+                        </nav>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="show-alerts" style="margin-top: 4em;"></div>
+        </div>
+        <div class="col-md-9 col-lg-9 col-xl-10">
+
+            <section id="detalleCorreo" class="d-none" style="height: calc(100vh - 100px); overflow-x: hidden; overflow-y: auto;">
+                @Html.Partial("~/Views/Bandeja/CorreoDetalle.cshtml")
+            </section>
+
+            <div id="contenedor-correos">
+                <div id="section-container" class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
+                    <ul class="nav nav-line flex-grow-1" id="myTab" role="tablist" style="border-bottom: none !important; margin-bottom: 2px;">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="buyers-tab" data-toggle="tab" href="#buyers" role="tab" aria-controls="buyers" aria-selected="true">Principal <span class="badge badge-light badge-pill ml-1" id="contador-correos-nuevos">4</span></a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link" id="internal-tab" data-toggle="tab" href="#internal" role="tab" aria-controls="internal" aria-selected="false">Internal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="all-primary-tab" data-toggle="tab" href="#all-primary" role="tab" aria-controls="all-primary" aria-selected="false">All primary</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="social-tab" data-toggle="tab" href="#social" role="tab" aria-controls="social" aria-selected="false">Social</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="promotions-tab" data-toggle="tab" href="#promotions" role="tab" aria-controls="promotions" aria-selected="false">Promotions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="updates-tab" data-toggle="tab" href="#updates" role="tab" aria-controls="updates" aria-selected="false">Updates</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="forums-tab" data-toggle="tab" href="#forums" role="tab" aria-controls="forums" aria-selected="false">Forums</a>
+                            </li>*@
+                    </ul>
+                    <!--Btn filtro y refrescar-->
+                    <div class="form-inline flex-nowrap mt-2 mt-md-0 ml-md-5">
+                        <input id="input-buscarCorreos" type="search" class="form-control form-control-sm mr-2 d-none" placeholder="Buscar...">
+                        <button type="button" class="btn btn-white btn-xs btn-uppercase" data-toggle="modal" data-target="#modal-filtradoBusqueda-correo">
+                            <i class="w-15" data-feather="filter"></i> Filtros
+                        </button>
+                        <button type="button" id="btn-refrescarlistadocorreos" class="btn btn-xs pd-x-15 btn-white btn-uppercase mg-l-5">
+                            <i class="wd-10 mg-r-5" data-feather="rotate-cw"></i> Refrescar
+                        </button>
+                    </div>
+                    <!-- pagination -->
+                    <nav class="d-flex align-items-center justify-content-end" style="margin-left:1em;">
+                        <span id="span-numero-paginacion" class="text-muted small mr-3">1 de 5</span>
+                        <ul class="pagination pagination-sm justify-content-end mg-b-0">
+                            <li id="paginacion-prev" class="page-item disabled"><a class="page-link page-link-icon" href="#"><i data-feather="chevron-left"></i></a></li>
+                            <li id="paginacion-next" class="page-item"><a class="page-link page-link-icon" href="#"><i data-feather="chevron-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="container-correo" class="tab-content">
+
+                    <section class="tab-pane fade show active" id="buyers" role="tabpanel" aria-labelledby="buyers-tab" style="height: calc(100vh - 140px);">
+                        <!--lista correos-->
+                        <div class="h-100">
+                            <div id="lista-correos" class="position-relative border rounded bg-white" style="height: calc(100% - 50px); overflow-y: auto;">
+                            </div>
+                            <footer class="d-flex align-items-center justify-content-end px-3" style="height: 50px;">
+                                <nav class="d-flex align-items-center justify-content-end" style="margin-left:1em;">
+                                    <span id="span-numero-paginacion" class="text-muted small mr-3">1 de 5</span>
+                                    <ul class="pagination pagination-sm justify-content-end mg-b-0">
+                                        <li class="page-item disabled"><a class="page-link page-link-icon" href="#"><i data-feather="chevron-left"></i></a></li>
+                                        <li class="page-item"><a class="page-link page-link-icon" href="#"><i data-feather="chevron-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </footer>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- mail compose - nuevo correo -->
+<div id="mailCompose" class="mail-compose shrink">
+    <form id="frm-compose-nuevo-correo">
+        <div class="mail-compose-dialog">
+            <div class="mail-compose-header py-2">
+                <h6 class="mail-compose-title tx-white">Nuevo correo</h6>
+                <nav class="nav nav-icon-only">
+                    <a id="mailComposeMinimize" href="" class="nav-link nav-link-minimize d-none d-lg-block">
+                        <i data-feather="minus"></i>
+                        <i data-feather="square"></i>
+                    </a>
+                    <a id="mailComposeShrink" href="" class="nav-link nav-link-shrink d-none d-lg-block">
+                        <i data-feather="minimize-2"></i>
+                        <i data-feather="maximize-2"></i>
+                    </a>
+                    <a id="mailComposeClose" href="" class="nav-link nav-link-close"><i data-feather="x"></i></a>
+                </nav>
+            </div>
+            <div class="mail-compose-body pt-3" style="font-size:0.9em">
+                <div class="form-row align-items-center">
+                    <div class="col-sm col-xl-1" style="max-width: 100px; font-size: 13px">De:</div>
+                    <div class="col-sm-11 col-xl">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <b><span id="nuevo-emailFrom-name"> Kristian Garcia Valcarcel </span><span> [</span><span id="nuevo-emailFrom">kgarciavalcarcel@gmail.com]</span><span>]</span></b>
+                            </div>
+                            <div class="ml-2 text-nowrap">
+                                <button id="btn-cc-nuevoCorreo" class="btn btn-white btn-xs px-2"><i data-feather="plus" class="mr-1"></i>Cc</button>
+                                <button id="btn-cco-nuevoCorreo" class="btn btn-white btn-xs px-2"><i data-feather="plus" class="mr-1"></i>CCO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-1">
+                <div class="form-row align-items-center">
+                    <div class="col-sm col-xl-1" style="max-width: 100px; font-size: 14px">Para:</div>
+                    <div class="col-sm-11 col-xl position-relative">
+                        <style>
+                            .my-mail-election-input .conteiner::-webkit-scrollbar {
+                                width: 5px; /* Tamaño del scroll en vertical */
+                                height: 5px; /* Tamaño del scroll en horizontal */
+                            }
+                            /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+                            .my-mail-election-input .conteiner::-webkit-scrollbar-thumb {
+                                background: #ccc;
+                                border-radius: 4px;
+                            }
+
+                                /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+                                .my-mail-election-input .conteiner::-webkit-scrollbar-thumb:hover {
+                                    background: #b3b3b3;
+                                    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+                                }
+
+                                /* Cambiamos el fondo cuando esté en active */
+                                .my-mail-election-input .conteiner::-webkit-scrollbar-thumb:active {
+                                    background-color: #999999;
+                                }
+
+                            /* Ponemos un color de fondo y redondeamos las esquinas del track */
+                            .my-mail-election-input .conteinerr::-webkit-scrollbar-track {
+                                background: #e1e1e1;
+                                border-radius: 4px;
+                            }
+
+                            /* Cambiamos el fondo cuando esté en active o hover */
+                            .my-mail-election-input .conteiner::-webkit-scrollbar-track:hover,
+                            .my-mail-election-input .conteiner::-webkit-scrollbar-track:active {
+                                background: #d4d4d4;
+                            }
+                        </style>
+                        <div id="input-para-compose-nuevoCorreo" class="bd-0 pd-x-0 d-flex my-mail-election-input postion-relative" style="">
+                            <div class="conteiner w-100 d-flex" style="gap:.3rem; margin-bottom: .3rem; min-height: 30px; max-height: 75px; overflow-y: auto; flex-wrap: wrap; align-items: center;">
+                                <span contenteditable="true" class="input" style="outline: none; vertical-align: middle; height: 30px; line-height: 30px">
+                                </span>
+                            </div>
+                        </div>
+                        <div id="div-lista-correos" class="list-group position-absolute container-lista-correo" style="top : 100% ; overflow-y: auto; max-height: 250px; z-index: 99999999;"> </div>
+                        <style>
+                            .container-lista-correo::-webkit-scrollbar {
+                                width: 5px; /* Tamaño del scroll en vertical */
+                                height: 5px; /* Tamaño del scroll en horizontal */
+                            }
+
+                            /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+                            .container-lista-correo::-webkit-scrollbar-thumb {
+                                background: #ccc;
+                                border-radius: 4px;
+                            }
+
+                                /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+                                .container-lista-correo::-webkit-scrollbar-thumb:hover {
+                                    background: #b3b3b3;
+                                    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+                                }
+
+                                /* Cambiamos el fondo cuando esté en active */
+                                .container-lista-correo::-webkit-scrollbar-thumb:active {
+                                    background-color: #999999;
+                                }
+
+                            /* Ponemos un color de fondo y redondeamos las esquinas del track */
+                            .container-lista-correo::-webkit-scrollbar-track {
+                                background: #e1e1e1;
+                                border-radius: 4px;
+                            }
+
+                                /* Cambiamos el fondo cuando esté en active o hover */
+                                .container-lista-correo::-webkit-scrollbar-track:hover,
+                                .container-lista-correo::-webkit-scrollbar-track:active {
+                                    background: #d4d4d4;
+                                }
+                        </style>
+                    </div>
+                </div>
+
+                <hr id="separacion-linea-cc-nuevo" class="my-1 d-none">
+
+                <div id="contenedorNuevoCorreo-cc" class="form-row align-items-center d-none">
+                    <div class="col-sm col-xl-1" style="max-width: 100px; font-size: 14px">Cc:</div>
+                    <div class="col-sm-11 col-xl position-relative">
+                        <div id="input-cc-compose-nuevoCorreo" class="bd-0 pd-x-0 d-flex my-mail-election-input postion-relativ" style="">
+                            <div class="conteiner w-100 d-flex" style="gap:.3rem; margin-bottom: .3rem; min-height: 30px; max-height: 75px; overflow-y: auto; flex-wrap: wrap; align-items: center;">
+                                <span contenteditable="true" class="input" style="outline: none; vertical-align: middle; height: 30px;">
+
+                                </span>
+                            </div>
+                            <div id="div-lista-correos-cc" class="list-group position-absolute container-lista-correo" style="top : 100% ; overflow-y: auto; max-height: 250px; z-index: 99999999;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compose-form-btn-group-1">
+                        <button class="btn-compose-form-sm" id="compose-nuevo-close-cc">x</button>
+                    </div>
+                </div>
+
+                <hr id="separacion-linea-cco-nuevo" class="my-1 d-none">
+
+                <div id="contenedorNuevoCorreo-cco" class="form-row align-items-center d-none">
+                    <div class="col-sm col-xl-1" style="max-width: 100px; font-size: 14px">CCO:</div>
+                    <div class="col-sm-11 col-xl">
+                        <div id="input-cco-compose-nuevoCorreo" class="bd-0 pd-x-0 d-flex my-mail-election-input" style="">
+                            <div class="conteiner w-100 d-flex" style="gap:.3rem; margin-bottom: .3rem; min-height: 30px; max-height: 75px; overflow-y: auto; flex-wrap: wrap; align-items: center;">
+                                <span contenteditable="true" class="input" style="outline: none; vertical-align: middle; height: 30px;">
+
+                                </span>
+                            </div>
+                            <div id="div-lista-correos-cco" class="list-group position-absolute container-lista-correo" style="top : 100% ; overflow-y: auto; max-height: 250px; z-index: 99999999;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compose-form-btn-group-1">
+                        <button class="btn-compose-form-sm" id="compose-nuevo-close-cco">x</button>
+                    </div>
+                </div>
+                <hr class="my-1">
+                <div class="form-row align-items-center">
+                    <div class="col-sm col-xl-1" style="max-width: 100px; font-size:14px">Asunto:</div>
+                    <div class="col-sm-11 col-xl">
+                        <input autocomplete="off" id="asunto-nuevoCorreo" type="text" class="form-control form-control-sm bd-0 pd-x-0 eliminar-autofill-azul">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <!--Contenedor para escribir mensaje-->
+                    <div id="editor-texto-nuevoCorreo" class="contenedor-escribir-correo" style="height: 180px;  overflow-y: auto"></div>
+                    <style>
+                        .ql-editor::-webkit-scrollbar {
+                            width: 5px; /* Tamaño del scroll en vertical */
+                            height: 5px; /* Tamaño del scroll en horizontal */
+                        }
+
+                        /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+                        .ql-editor::-webkit-scrollbar-thumb {
+                            background: #ccc;
+                            border-radius: 4px;
+                        }
+
+                            /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+                            .ql-editor::-webkit-scrollbar-thumb:hover {
+                                background: #b3b3b3;
+                                box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+                            }
+
+                            /* Cambiamos el fondo cuando esté en active */
+                            .ql-editor::-webkit-scrollbar-thumb:active {
+                                background-color: #999999;
+                            }
+
+                        /* Ponemos un color de fondo y redondeamos las esquinas del track */
+                        .ql-editor::-webkit-scrollbar-track {
+                            background: #e1e1e1;
+                            border-radius: 4px;
+                        }
+
+                            /* Cambiamos el fondo cuando esté en active o hover */
+                            .ql-editor::-webkit-scrollbar-track:hover,
+                            .ql-editor::-webkit-scrollbar-track:active {
+                                background: #d4d4d4;
+                            }
+                    </style>
+                    <!--Contenedor de archivos adjuntos-->
+                    <div id="container-archivos-nuevoCorreo" class="p-2">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center bg-light rounded border text-muted p-1 tx-12 mb-1">
+                                    <div class="media align-items-center">
+                                        <div class="mr-1">
+                                            <i class="wd-15" data-feather="file"></i>
+                                        </div>
+                                        <div class="media-body"><a href="" class="text-muted">Chilli Piper - CRM.zip</a></div>
+                                    </div>
+                                    <div class="media align-items-center">
+                                        <div class="media-body">26.5 MB</div>
+                                        <div class="ml-1">
+                                            <i class="wd-15" data-feather="trash" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center bg-light rounded border text-muted p-1 tx-12 mb-1">
+                                    <div class="media align-items-center">
+                                        <div class="mr-1">
+                                            <i class="wd-15" data-feather="file"></i>
+                                        </div>
+                                        <div class="media-body"><a href="" class="text-muted">Chilli Piper - CRM.zip</a></div>
+                                    </div>
+                                    <div class="media align-items-center">
+                                        <div class="media-body">26.5 MB</div>
+                                        <div class="ml-1">
+                                            <i class="wd-15" data-feather="trash" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Libreria Quill -->
+                    <div id="toolbar-container-nuevoCorreo" class="align-items-md-center flex-wrap p-1 d-none">
+                        <div>
+                            <span class="ql-formats">
+                                <select class="ql-font"></select>
+                                <select class="ql-size"></select>
+                            </span>
+                            <span class="ql-formats">
+                                <select class="ql-color"></select>
+                                <select class="ql-background"></select>
+                            </span>
+                            <span class="ql-formats">
+                                <button class="ql-bold"></button>
+                                <button class="ql-italic"></button>
+                                <button class="ql-underline"></button>
+                            </span>
+                        </div>
+                    </div>
+                    <!--Footer - btns enviar y adjuntar archivos-->
+                    <div class="d-flex align-items-md-center flex-wrap mt-2">
+                        <div class="d-flex align-items-center mb-1">
+                            <button id="enviar-nuevoCorreo" type="submit" form="frm-compose-nuevo-correo" class="btn btn-primary btn-sm mr-3"><i data-feather="send"></i> Enviar</button>
+                        </div>
+                        <div class="d-flex align-items-center mb-1 mx-3">
+                            <button id="textoEdit-nuevoCorreo" class="btn btn-white btn-sm px-2" data-toggle="dropdown" aria-expanded="false"><i data-feather="type"></i></button>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0)" class="dropdown-item">texto1</a>
+                            <a href="javascript:void(0)" class="dropdown-item">texto2</a>
+                            <a href="javascript:void(0)" class="dropdown-item">texto3</a>
+                            <a href="javascript:void(0)" class="dropdown-item">texto4</a>
+                        </div>
+                        <div class="d-flex align-items-center mb-1">
+                            <!--Abre explorador de archivos-->
+                            <input id="archivo-correonuevo" type="file" class="d-none" value="" />
+                            <input id="imagenes-correonuevo" type="file" class="d-none" accept="image/*" multiple value="" />
+                            <div class="btn-group">
+                                <!--Btns para adjuntar archivos-->
+                                <button href="javascript:void(0);" onclick="javascript: document.getElementById('archivo-correonuevo').click();" data-toggle="tooltip" class="btn btn-white btn-sm px-2"><i data-feather="paperclip"></i></button>
+                                <button href="javascript:void(0);" onclick="javascript: document.getElementById('imagenes-correonuevo').click();" data-toggle="tooltip" class="btn btn-white btn-sm px-2"><i data-feather="image"></i></button>
+                                <button class="btn btn-white btn-sm px-2" data-toggle="modal" data-target="#adjuntarLink-nuevoCoreo"><i data-feather="link"></i></button>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-1 ml-auto">
+                            <!--<span class="text-muted text-nowrap tx-13 mr-2"><i class="wd-15" data-feather="check"></i> Draft saved</span>-->
+                            <button id="eliminar-nuevoCorreo" class="btn btn-white btn-sm px-2"><i data-feather="trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal / Filtro Busqueda-->
+<div class="modal fade effect-scale" id="modal-filtradoBusqueda-correo" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <section class="modal-header">
+                <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-13 mb-0">Filtro Búsqueda</h6>
+                <button id="cerrar-filtroBusqueda-correos" type="button" class="close pos-absolute t-10 r-15" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i data-feather="x" class="wd-20"></i></span>
+                </button>
+            </section>
+            <div class="modal-body py-2">
+                <section>
+                    <form action="/" method="get" id="frm-filtroBusqueda-correos">
+                        <div class="form-row">
+                            <div class="col-md-6 form-group mg-b-5">
+                                <label class="label-control">De</label>
+                                <input id="filtropor-de" type="text" class="form-control form-control-sm" placeholder="De" />
+                            </div>
+                            <div class="col-md-6 form-group mg-b-5">
+                                <label class="label-control">Para</label>
+                                <input id="filtropor-para" type="text" class="form-control form-control-sm" placeholder="Para" />
+                            </div>
+                            <div class="col-md-6 form-group mg-b-5">
+                                <label class="label-control">Asunto</label>
+                                <input id="filtropor-asunto" type="text" class="form-control form-control-sm" placeholder="Asunto" />
+                            </div>
+                            <div class="col-md-6 form-group mg-b-5">
+                                <label class="label-control">Contiene palabra</label>
+                                <input id="filtropor-contienepalabra" type="text" class="form-control form-control-sm" placeholder="Contiene palabra..." />
+                            </div>
+                            <div class="col-md-6 form-group mg-b-5">
+                                <label class="label-control">Fecha Inicio</label>
+                                <input id="dt-fechainiciobusqueda-correos" type="text" class="form-control form-control-sm datepicker-chat" placeholder="DD/MM/YYYY" />
+                            </div>
+                            <div class="col-md-6 form-group mg-b-5">
+                                <label class="label-control">Fecha Final</label>
+                                <input id="dt-fechafinalbusqueda-correos" type="text" class="form-control form-control-sm datepicker-chat" placeholder="DD/MM/YYYY" />
+                            </div>
+                        </div>
+
+                        <div class="form-row mg-t-8">
+                            <div class="col-md-12">
+                                <label class="label-control">Tipo de correo</label>
+                                <select class="form-control form-control-sm" id="select-tipobusqueda-correos">
+                                    <option value="-1">-- Todos --</option>
+                                    <option value="1">Recibidos</option>
+                                    <option value="2">Enviados</option>
+                                    <option value="3">Favoritos</option>
+                                    <option value="4">Borradores</option>
+                                    <option value="5">Papelera</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="modal-footer pd-t-6 pd-b-6">
+                <button id="btn_cancelar-filtroBusqueda" type="button" class="label-control btn btn-light btn-uppercase btn-sm m-0" data-dismiss="modal"> <span>Cancelar</span></button>
+                <button id="btn_buscar-filtroBusqueda" type="submit" form="frm-filtroBusqueda-correos" class="btn btn-primary btn-uppercase btn-sm">
+                    <i data-feather="filter"></i> <span> Buscar</span> <span class="spinner-border spinner-border-sm mg-l-5 d-none" role="status" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal elimiar carpeta-->
+<div class="modal fade" id="modal-correo-integracion-eliminar-carpeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h5 class="modal-title" >Seguro desea eliminar la carpeta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Se eliminará con todos los correos guardados
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-white btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="FnEliminarCarpeta();">Eliminar Carpeta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal elimiar correo-->
+<div class="modal fade" id="modal-correo-integracion-enviar-papelera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h5 class="modal-title" >Confirmacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Desea Ennviar correo a papelera ?
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-white btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-confirmar-papelera-correo">Enviar a papelera</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #editor-texto{
+        font-size: 13px;
+    }
+    #editor-texto-nuevoCorreo{
+        font-size: 13px;
+    }
+    .correo-row-integracion .list-group-item {
+        background: #e7e9ee !important;
+    }
+        .correo-row-integracion.readed .list-group-item {
+            background: white !important;
+        }
+</style>
+
+<script src="/Contents/plugins/jquery/jquery.min.js"></script>
+<script src="js/temporal.js"></script>
